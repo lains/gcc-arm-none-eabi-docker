@@ -9,8 +9,10 @@
 #
 # versions: 
 # ---------
+#  release: 10-2021-major
+#    alias: 10.3-2021.10, 10.3, 10
 #  release: 10-2020-q4-major
-#    alias: 10.2.1, 10.2, 10
+#    alias: 10.2.1, 10.2
 #  release: 9-2019-q4-major
 #    alias: 9.2.1, 9.2, 9
 #  release: 8-2018-q4-major
@@ -50,6 +52,9 @@ https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2019q4/gcc-arm-none-e
 ENV LINK_10_2020_q4_major \
 https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/gcc-arm-none-eabi-10-2020-q4-major-x86_64-linux.tar.bz2?revision=ca0cbf9c-9de2-491c-ac48-898b5bbc0443&hash=B47BBB3CB50E721BC11083961C4DF5CA
 
+ENV LINK_10_2021_major \
+https://developer.arm.com/-/media/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2?rev=78196d3461ba4c9089a67b5f33edf82a&hash=5631ACEF1F8F237389F14B41566964EC
+
 # TODO:
 # Add a case for every release
 RUN echo "Install version: ${VERSION}" &&   \
@@ -62,6 +67,8 @@ RUN echo "Install version: ${VERSION}" &&   \
         wget -c ${LINK_9_2019_q4_major} -O -| tar -xj -C ${GCC_ARM_PATH}  ;;    \
     "10-2020-q4-major")                      \
         wget -c ${LINK_10_2020_q4_major} -O -| tar -xj -C ${GCC_ARM_PATH}  ;;    \
+    "10-2021-major")                      \
+        wget -c ${LINK_10_2021_major} -O -| tar -xj -C ${GCC_ARM_PATH}  ;;    \
     *)                                      \
         false || echo "Non supported version passed!"  ;;                       \
     esac
