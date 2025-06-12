@@ -20,7 +20,7 @@
 #  release: 7-2017-q4-major
 #    alias: 7.2.1, 7.2, 7
 
-FROM ubuntu:18.04
+FROM ubuntu:24.04
 
 ARG VERSION
 ENV GCC_ARM_PATH        /usr/local
