@@ -67,7 +67,7 @@ RUN echo "Install version: ${VERSION}" &&   \
         wget -c ${LINK_9_2019_q4_major} -O -| tar -xj -C ${GCC_ARM_PATH}  ;;    \
     "10-2020-q4-major")                      \
         wget -c ${LINK_10_2020_q4_major} -O -| tar -xj -C ${GCC_ARM_PATH}  ;;    \
-    "10-2021-major")                      \
+    "10.3-2021.10")                      \
         wget -c ${LINK_10_2021_major} -O -| tar -xj -C ${GCC_ARM_PATH}  ;;    \
     *)                                      \
         false || echo "Non supported version passed!"  ;;                       \
@@ -77,5 +77,5 @@ ENV PATH "${GCC_ARM_PATH}/gcc-arm-none-eabi-${VERSION}/bin:$PATH"
 
 # Start bash login shell
 COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["/bin/bash", "-i"]
